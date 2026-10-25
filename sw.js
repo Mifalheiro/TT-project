@@ -1,5 +1,5 @@
 // Service worker mínimo: guarda só a "casca" da app. Os dados vêm sempre do Google (nunca ficam em cache aqui).
-var CACHE = "navais-tt-v2";
+var CACHE = "navais-tt-v3";
 var FICHEIROS = ["./", "./index.html", "./manifest.json", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png"];
 
 self.addEventListener("install", function(e) {
