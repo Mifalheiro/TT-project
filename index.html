@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <title>Navais TT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f0f2f5">
+  <meta name="description" content="Portal de Cartões Digitais - Navais TT">
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+
+  <!-- iPhone: abrir como app, sem barras do Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Navais TT">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; background: #f0f2f5; overflow: hidden; }
+    #app { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; background: #f0f2f5;
+           padding-top: env(safe-area-inset-top); box-sizing: border-box; }
+    #aviso { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; flex-direction: column;
+             font-family: 'Segoe UI', Arial, sans-serif; color: #333; text-align: center; padding: 20px; background: #f0f2f5; }
+    #aviso button { margin-top: 14px; padding: 12px 22px; border: 0; border-radius: 6px; background: #0056b3; color: #fff; font-size: 16px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <iframe id="app" title="Navais TT"
+          src="https://script.google.com/macros/s/AKfycbyHQRswQgg4mvdofRCDElm8dSdA3VasVO5vADrEwxRorVSRomniE1d5nJuRf0V1Hxud/exec"
+          allow="fullscreen"></iframe>
+
+  <div id="aviso">
+    <div>Sem ligação à internet.<br>Ligue-se para aceder aos cartões.</div>
+    <button onclick="location.reload()">Tentar de novo</button>
+  </div>
+
+  <script>
+    // Regista o service worker (necessário para a instalação como app)
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function() { navigator.serviceWorker.register("sw.js"); });
+    }
+    // Aviso simples quando não há internet
+    function atualizarRede() { document.getElementById("aviso").style.display = navigator.onLine ? "none" : "flex"; }
+    window.addEventListener("online", atualizarRede);
+    window.addEventListener("offline", atualizarRede);
+    atualizarRede();
+  </script>
+</body>
+</html>
