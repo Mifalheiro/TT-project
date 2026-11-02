@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Navais TT</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#FFFFFF">
+  <meta name="theme-color" content="#0056b3">
   <meta name="description" content="Portal de Cartões Digitais - Navais TT">
 
 
@@ -16,15 +16,18 @@
   <!-- iPhone: abrir como app, sem barras do Safari -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Navais TT">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 
   <style>
-    html, body { margin: 0; padding: 0; height: 100%; background: #f0f2f5; overflow: hidden; }
-    #app { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; background: #f0f2f5;
-           padding-top: env(safe-area-inset-top); box-sizing: border-box; }
-    #aviso { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; flex-direction: column;
+    /* O fundo azul aparece nas zonas das barras do telemóvel (topo e fundo),
+       para os ícones brancos do sistema se verem bem */
+    html, body { margin: 0; padding: 0; height: 100%; background: #0056b3; overflow: hidden; }
+    #app, #aviso { position: fixed; left: 0; right: 0;
+                   top: env(safe-area-inset-top, 0px); bottom: env(safe-area-inset-bottom, 0px); }
+    #app { width: 100%; height: auto; border: 0; background: #f0f2f5; }
+    #aviso { display: none; align-items: center; justify-content: center; flex-direction: column;
              font-family: 'Segoe UI', Arial, sans-serif; color: #333; text-align: center; padding: 20px; background: #f0f2f5; }
     #aviso button { margin-top: 14px; padding: 12px 22px; border: 0; border-radius: 6px; background: #0056b3; color: #fff; font-size: 16px; font-weight: bold; }
   </style>
